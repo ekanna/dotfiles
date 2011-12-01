@@ -1,0 +1,87 @@
+set nocompatible
+
+source $VIMRUNTIME/vimrc_example.vim
+"source $VIMRUNTIME/mswin.vim
+"behave mswin
+
+set diffexpr=MyDiff()
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let eq = ''
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      let cmd = '""' . $VIMRUNTIME . '\diff"'
+      let eq = '"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+endfunction
+
+" show line numbers
+set number
+
+" Set syntax highlighting to always on
+syntax enable
+
+" Set automatic filetype detection to on
+filetype on
+
+" Disable VIM swap and backup files
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Set fonts
+if has('gui_running')
+	set guioptions-=m  "remove menu bar
+	set guioptions-=T  "remove toolbar
+	set guioptions-=r  "remove right-hand scroll bar
+	
+	if has('gui_win32')
+		set guifont=Consolas:h10:cANSI
+	elseif has('gui_gtk')
+		"set guifont=Inconsolata\ 12
+		set guifont=Droid\ Sans\ Mono\ 12
+		"set guifont=DejaVu\ Sans\ Mono\ 12
+	endif
+
+	"vertical line
+	set colorcolumn=80
+	
+	" Colorscheme
+	colorscheme zenburn
+endif
+
+" paste from system cilpbord
+set clipboard=unnamed
+
+" encoding
+"set filenc=utf8
+set encoding=utf8
+
+set showtabline=4
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
+" map tabnext, tabprevious and tabnew (like firefox)
+map <C-tab> :tabnext<CR>
+map <C-S-tab> :tabprevious<CR>
+nmap <C-t> :tabnew<CR>i
+imap <C-t> <ESC>:tabnew<CR>i
+
