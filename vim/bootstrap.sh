@@ -9,8 +9,10 @@ tar -czvf ~/vim_$NOW.tar.gz ~/.vim ~/.vimrc
 echo "Copying vimrc to ~/.vimrc"
 cp vimrc ~/.vimrc
 
+# if not exists create
+mkdir -p ~/.vim/colors
 echo "Copying vim/colors to ~/.vim/colors"
-cp -r vim/colors ~/.vim/colors
+cp -r ./vim/colors/* ~/.vim/colors
 
 
 
