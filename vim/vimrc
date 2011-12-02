@@ -1,6 +1,7 @@
 set nocompatible
 set clipboard=unnamed								" paste from system cilpbord
 set encoding=utf-8									" set encoding to UTF-8
+set showcmd											" show incoplete commands
 
 "" Swap and backup files
 set nobackup
