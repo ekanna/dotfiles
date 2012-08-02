@@ -1,28 +1,38 @@
 # Build and Object Folders
 bin/
+Bin/
 obj/
 Obj/
 
-#User Specific Files
+# User Specific Files
 *.user
 *.suo
 *.userprefs
 *.pidb
 
 
-#Resource Caches
+# Resource Caches
 _ReSharper.*
-*.sln.cache
+*.cache
 
-#Nuget
+# Nuget
 packages
 
-#vim
+# Vim
 *~
 *.swp
 
-#unit tests
+# Unit tests
 TestResults
 test-results
 
+# Upgrade Report Files
+_UpgradeReport_Files/
+
+# Nuget
+packages/**
+!packages/repositories.config
+
+# Logs
+*.log
 

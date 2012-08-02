@@ -6,6 +6,3 @@ Collection of my preferences and script files.
 
 VIM files and bootstrap scripts.
 
-## TODO
-
-My plan file.
